@@ -71,7 +71,7 @@ const skillObserver = new IntersectionObserver((entries) => {
 skillFills.forEach(fill => skillObserver.observe(fill));
 
 // ===== COUNTER ANIMATION =====
-function animateCount(el, target, duration = 3000) {
+function animateCount(el, target, duration = 2000) {
   let start = 0;
   const step = target / (duration / 16);
   const update = () => {
