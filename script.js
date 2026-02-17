@@ -1,4 +1,27 @@
-// ===== MOBILE NAV =====
+// ===== AVATAR IMAGE HANDLING =====
+(function() {
+  const avatarDiv = document.querySelector('.avatar');
+  const img = document.getElementById('avatarImg');
+  if (!img) return;
+
+  // Test if image loads; if not, show initials cleanly
+  const testImg = new Image();
+  testImg.onload = function() {
+    // Image loaded fine — show it
+    img.style.display = 'block';
+  };
+  testImg.onerror = function() {
+    // Image failed — remove img, show initials text node only
+    img.remove();
+    avatarDiv.textContent = 'AK';
+  };
+  // Start the test with the same src
+  testImg.src = img.src;
+  // Hide the real img until we know it works
+  img.style.display = 'none';
+})();
+
+
 const hamburger = document.getElementById('hamburger');
 const sidebar = document.getElementById('sidebar');
 
@@ -108,7 +131,7 @@ if (form) {
       }
     } catch {
       status.className = 'form-status error';
-      status.textContent = '✗ Failed to send. Please try again or email me directly at engahmedkhalid3s@gmail.com';
+      status.textContent = '✗ Failed to send. Please email me directly at engahmedkhalid3s@gmail.com';
       btn.innerHTML = orig;
       btn.disabled = false;
     }
