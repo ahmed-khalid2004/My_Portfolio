@@ -24,9 +24,8 @@
 
 | Desktop View | Mobile View |
 |:---:|:---:|
-| ![Desktop](https://via.placeholder.com/600x350/0f1219/3b82f6?text=Desktop+Preview) | ![Mobile](https://via.placeholder.com/250x450/0f1219/3b82f6?text=Mobile+Preview) |
+| ![Desktop](https://github.com/ahmed-khalid2004/My_Portfolio/blob/main/images/Screenshot%20(755).png) | ![Mobile](https://github.com/ahmed-khalid2004/My_Portfolio/blob/main/images/Screenshot%20(756).png) |
 
-> **💡 Replace the placeholder images above with actual screenshots of your portfolio**
 
 </div>
 
