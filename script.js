@@ -2,26 +2,44 @@
 (function() {
   const avatarDiv = document.querySelector('.avatar');
   const img = document.getElementById('avatarImg');
-  if (!img) return;
+  if (!img || !avatarDiv) return;
 
-  // Test if image loads; if not, show initials cleanly
-  const testImg = new Image();
-  testImg.onload = function() {
-    // Image loaded fine — show it
-    img.style.display = 'block';
-  };
-  testImg.onerror = function() {
-    // Image failed — remove img, show initials text node only
-    img.remove();
-    avatarDiv.textContent = 'AK';
-  };
-  // Start the test with the same src
-  testImg.src = img.src;
-  // Hide the real img until we know it works
+  const paths = [
+    'Images/ahmed.jpg',
+    'images/ahmed.jpg',
+    'Images/ahmed.jpeg',
+    'images/ahmed.jpeg',
+    'Images/ahmed.png',
+    'images/ahmed.png',
+    'Images/profile.jpg',
+    'images/profile.jpg',
+  ];
+
+  let index = 0;
+
+  function tryNext() {
+    if (index >= paths.length) {
+      img.remove();
+      avatarDiv.textContent = 'AK';
+      return;
+    }
+    const testImg = new Image();
+    testImg.onload = function() {
+      img.src = paths[index];
+      img.style.cssText = 'display:block; width:100%; height:100%; object-fit:cover; border-radius:18px;';
+    };
+    testImg.onerror = function() {
+      index++;
+      tryNext();
+    };
+    testImg.src = paths[index];
+  }
+
   img.style.display = 'none';
+  tryNext();
 })();
 
-
+// ===== MOBILE NAV =====
 const hamburger = document.getElementById('hamburger');
 const sidebar = document.getElementById('sidebar');
 
@@ -30,7 +48,6 @@ hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
 });
 
-// Close sidebar when a nav link is clicked (mobile)
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => {
     if (window.innerWidth <= 768) {
